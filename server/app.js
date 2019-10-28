@@ -32,7 +32,7 @@ app.use(session({
   key: 'sessionid',
   secret: 'Domo Arigato',
   resave: true,
-  saveUnititialized: true,
+  saveUninitialized: true,
 }));
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

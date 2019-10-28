@@ -25,7 +25,7 @@ const makeDomo = (req, res) => {
   const newDomo = new Domo.DomoModel(domoData);
   const domoPromise = newDomo.save();
 
-  domoPromise.then(() => res.join({ redirect: '/maker' }));
+  domoPromise.then(() => res.json({ redirect: '/maker' }));
   domoPromise.catch((err) => {
     console.log(err);
     if (err.code === 11000) {

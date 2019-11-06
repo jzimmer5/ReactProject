@@ -88,7 +88,7 @@ const setup = (csrf) => {
 
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
-        createSignupWindow(csrf);
+        createLoginWindow(csrf);
         return false;
     });
 

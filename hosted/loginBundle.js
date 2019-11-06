@@ -9,7 +9,7 @@ var handleLogin = function handleLogin(e) {
         return false;
     }
 
-    console.log($("input[name=_csrf").val());
+    console.log($("input[name=_csrf]").val());
 
     sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
 
@@ -31,7 +31,7 @@ var handleSignup = function handleSignup(e) {
         return false;
     }
 
-    sendAjax('POST', $("signupForm").attr("action"), $("#signupForm").serialize(), redirect);
+    sendAjax('POST', $("#signupForm").attr("action"), $("#signupForm").serialize(), redirect);
 
     return false;
 };
@@ -85,7 +85,7 @@ var SignupWindow = function SignupWindow(props) {
 };
 
 var createLoginWindow = function createLoginWindow(csrf) {
-    ReactDOM.render(React.createElement("loginWindow", { csrf: csrf }), document.querySelector("#content"));
+    ReactDOM.render(React.createElement(LoginWindow, { csrf: csrf }), document.querySelector("#content"));
 };
 
 var createSignupWindow = function createSignupWindow(csrf) {
@@ -94,15 +94,15 @@ var createSignupWindow = function createSignupWindow(csrf) {
 
 var setup = function setup(csrf) {
     var loginButton = document.querySelector("#loginButton");
-    var signupButton = document.querySelector("signupButton");
+    var signupButton = document.querySelector("#signupButton");
 
-    signupButton.addEventListener("click", function (e) {
+    signupButton.addEventListener('click', function (e) {
         e.preventDefault();
         createSignupWindow(csrf);
         return false;
     });
 
-    loginButton.addEventListener("click", function (e) {
+    loginButton.addEventListener('click', function (e) {
         e.preventDefault();
         createLoginWindow(csrf);
         return false;

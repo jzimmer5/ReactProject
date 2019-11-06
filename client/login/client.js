@@ -7,7 +7,7 @@ const handleLogin = (e) => {
         return false;
     }
 
-    console.log($("input[name=_csrf").val());
+    console.log($("input[name=_csrf]").val());
 
     sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
 
@@ -29,7 +29,7 @@ const handleSignup = (e) => {
         return false;
     }
 
-    sendAjax('POST', $("signupForm").attr("action"), $("#signupForm").serialize(), redirect);
+    sendAjax('POST', $("#signupForm").attr("action"), $("#signupForm").serialize(), redirect);
 
     return false;
 };
@@ -64,7 +64,7 @@ const SignupWindow = (props) => {
 
 const createLoginWindow = (csrf) => {
     ReactDOM.render(
-        <loginWindow csrf={csrf} />,
+        <LoginWindow csrf={csrf} />,
         document.querySelector("#content")
     );
 };
@@ -78,15 +78,15 @@ const createSignupWindow = (csrf) => {
 
 const setup = (csrf) => {
     const loginButton = document.querySelector("#loginButton");
-    const signupButton = document.querySelector("signupButton");
+    const signupButton = document.querySelector("#signupButton");
 
-    signupButton.addEventListener("click", (e) => {
+    signupButton.addEventListener('click', (e) => {
         e.preventDefault();
         createSignupWindow(csrf);
         return false;
     });
 
-    loginButton.addEventListener("click", (e) => {
+    loginButton.addEventListener('click', (e) => {
         e.preventDefault();
         createLoginWindow(csrf);
         return false;

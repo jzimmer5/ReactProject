@@ -1,5 +1,5 @@
 const controllers = require('./controllers');
-const mid = require('./middleware');
+const mid = require('./middlewareTest/Index.js');
 
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);

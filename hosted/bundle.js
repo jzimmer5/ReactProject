@@ -10,7 +10,7 @@ var handleDomo = function handleDomo(e) {
         return false;
     }
 
-    sendAjax('POST', $("#domoForm").attr("action"), $("domoForm").serialize(), function () {
+    sendAjax('POST', $("#domoForm").attr("action"), $("#domoForm").serialize(), function () {
         loadDomosFromServer();
     });
     return false;
@@ -38,7 +38,7 @@ var DomoForm = function DomoForm(props) {
 };
 
 var DomoList = function DomoList(props) {
-    if (props.domo.length === 0) {
+    if (props.domos.length === 0) {
         return React.createElement(
             "div",
             { className: "domoList" },

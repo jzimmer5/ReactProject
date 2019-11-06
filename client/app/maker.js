@@ -8,7 +8,7 @@ const handleDomo = (e) => {
         return false;
     }
 
-    sendAjax('POST', $("#domoForm").attr("action"), $("domoForm").serialize(), function() {
+    sendAjax('POST', $("#domoForm").attr("action"), $("#domoForm").serialize(), function() {
         loadDomosFromServer();
     });
     return false;
@@ -28,7 +28,7 @@ const DomoForm = (props) => {
 };
 
 const DomoList = function(props) {
-    if(props.domo.length === 0) {
+    if(props.domos.length === 0) {
         return (
             <div className="domoList">
                 <h3 className="emptyDomo">No Domos yet</h3>

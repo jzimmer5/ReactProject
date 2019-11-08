@@ -38,33 +38,6 @@ const makeDomo = (req, res) => {
   return domoPromise;
 };
 
-const changeDomo = (req, res) => {
-  if (!req.body.name || !req.body.age || !req.body.song) {
-    return res.status(400).json({ error: 'RAWR! Name, age, and song are required' });
-  }
-
-  const domoData = {
-    name: req.body.name,
-    age: req.body.age,
-    song: req.body.song,
-    owner: req.session.account._id,
-  };
-
-  const newDomo = new Domo.DomoModel(domoData);
-  const domoPromise = newDomo.save();
-
-  domoPromise.then(() => res.json({ redirect: '/maker' }));
-  domoPromise.catch((err) => {
-    console.log(err);
-    if (err.code === 11000) {
-      return res.status(400).json({ error: 'Domo already exists.' });
-    }
-    return res.status(400).json({ error: 'An error ocurred' });
-  });
-
-  return domoPromise;
-};
-
 const getDomos = (request, response) => {
   const req = request;
   const res = response;

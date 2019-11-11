@@ -12,14 +12,14 @@ const makerPage = (req, res) => {
 };
 
 const statPage = (req, res) => {
-    Money.MoneyModel.findByOwner(req.session.account._id, (err, docs) => {
-      if (err) {
-        console.log(err);
-        return res.status(400).json({ error: 'An error occurred' });
-      }
-      return res.render('statistics', { csrfToken: req.csrfToken(), moneyStacks: docs });
-    });
-  };
+  Money.MoneyModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred' });
+    }
+    return res.render('statistics', { csrfToken: req.csrfToken(), moneyStacks: docs });
+  });
+};
 
 const makeMoneyAccount = (req, res) => {
   if (!req.body.name || !req.body.amount || !req.body.typeOfAccount) {

@@ -99,16 +99,16 @@ var MoneyList = function MoneyList(props) {
 
 var loadMoneyAccountsFromServer = function loadMoneyAccountsFromServer() {
     sendAjax('GET', '/getMoney', null, function (data) {
-        ReactDOM.render(React.createElement(DomoList, { moneyStacks: data.moneyStacks }), document.querySelector("#moneyAccounts"));
+        ReactDOM.render(React.createElement(MoneyList, { moneyStacks: data.moneyStacks }), document.querySelector("#moneyAccounts"));
     });
 };
 
 var setup = function setup(csrf) {
-    ReactDOM.render(React.createElement(DomoForm, { csrf: csrf }), document.querySelector("#makeMoney"));
+    ReactDOM.render(React.createElement(MoneyForm, { csrf: csrf }), document.querySelector("#makeMoney"));
 
-    ReactDOM.render(React.createElement(DomoList, { domos: [] }), document.querySelector("#moneyAccounts"));
+    ReactDOM.render(React.createElement(MoneyForm, { moneyStacks: [] }), document.querySelector("#moneyAccounts"));
 
-    loadDomosFromServer();
+    loadMoneyAccountsFromServer();
 };
 
 var getToken = function getToken() {

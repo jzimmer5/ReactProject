@@ -2,8 +2,12 @@ const handleMoney = (e) => {
     e.preventDefault();
 
     $("#errorMessage").animate({width:'hide'},350);
-
-    if($("#moneyName").val() == '' || $("#moneyAmount").val() == '' || $("#typeOfAccount").val() == '') {
+    console.log($("#moneyName").val() == '');
+    console.log($("#amount").val() == '');
+    console.log((!$("#accountType").checked || !$("#accountType").checked));
+    debugger;
+    if($("#moneyName").val() == '' || $("#amount").val() == '' || (!$("#accountType").checked && !$("#accountType").checked)) {
+        debugger;
         handleError("RAWR! All fields are required");
         return false;
     }

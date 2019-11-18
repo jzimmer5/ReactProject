@@ -31,8 +31,12 @@ const MoneyForm = (props) => {
 const MoneyList = function(props) {
     if(props.moneyStacks.length === 0) {
         return (
+            <div class="wrapperForAd">
+                <div class="leftAd">This is an ad</div>
             <div className="domoList">
                 <h3 className="emptyDomo">No Accounts yet</h3>
+            </div>
+            <div class="leftAd">This is an ad</div>
             </div>
         );
     }
@@ -46,8 +50,12 @@ const MoneyList = function(props) {
         );
     });
     return (
+        <div className="wrapperForAd">
+                <div className="ad">This is an ad</div>
         <div className="domoList">
             {moneyNodes}
+        </div>
+        <div className="ad">This is an ad</div>
         </div>
     );
 };

@@ -97,7 +97,7 @@ var StatsList = function StatsList(props) {
             { className: "stats" },
             React.createElement(
                 "h3",
-                { className: "title" },
+                { "class": "title" },
                 moneyAccount.name,
                 " With Different Interests"
             ),
@@ -157,8 +157,22 @@ var StatsList = function StatsList(props) {
     });
     return React.createElement(
         "div",
-        { className: "domoList" },
-        accountStats
+        { className: "wrapperForAd" },
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        ),
+        React.createElement(
+            "div",
+            { className: "domoList" },
+            accountStats
+        ),
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        )
     );
 };
 
@@ -228,20 +242,32 @@ var OverallDiv = function OverallDiv(props) {
     };
     return React.createElement(
         "div",
-        { className: "domoList" },
-        overallStats
+        { className: "wrapperForAd" },
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        ),
+        React.createElement(
+            "div",
+            { className: "domoList" },
+            overallStats
+        ),
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        )
     );
 };
 
 var loadMoneyAccountsFromServer = function loadMoneyAccountsFromServer() {
     sendAjax('GET', '/getMoney', null, function (data) {
-        ReactDOM.render(React.createElement(OverallDiv, { moneyStacks: [data.moneyStacks] }), document.querySelector("#overall"));
         ReactDOM.render(React.createElement(StatsList, { moneyStacks: data.moneyStacks }), document.querySelector("#content"));
     });
 };
 
 var setup = function setup(csrf) {
-    ReactDOM.render(React.createElement(OverallDiv, { moneyStacks: [] }), document.querySelector("#overall"));
     ReactDOM.render(React.createElement(StatsList, { moneyStacks: [] }), document.querySelector("#content"));
 
     loadMoneyAccountsFromServer();

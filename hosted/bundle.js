@@ -46,11 +46,25 @@ var MoneyList = function MoneyList(props) {
     if (props.moneyStacks.length === 0) {
         return React.createElement(
             "div",
-            { className: "domoList" },
+            { "class": "wrapperForAd" },
             React.createElement(
-                "h3",
-                { className: "emptyDomo" },
-                "No Accounts yet"
+                "div",
+                { "class": "leftAd" },
+                "This is an ad"
+            ),
+            React.createElement(
+                "div",
+                { className: "domoList" },
+                React.createElement(
+                    "h3",
+                    { className: "emptyDomo" },
+                    "No Accounts yet"
+                )
+            ),
+            React.createElement(
+                "div",
+                { "class": "leftAd" },
+                "This is an ad"
             )
         );
     }
@@ -75,8 +89,22 @@ var MoneyList = function MoneyList(props) {
     });
     return React.createElement(
         "div",
-        { className: "domoList" },
-        moneyNodes
+        { className: "wrapperForAd" },
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        ),
+        React.createElement(
+            "div",
+            { className: "domoList" },
+            moneyNodes
+        ),
+        React.createElement(
+            "div",
+            { className: "ad" },
+            "This is an ad"
+        )
     );
 };
 

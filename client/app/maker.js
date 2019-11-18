@@ -2,12 +2,7 @@ const handleMoney = (e) => {
     e.preventDefault();
 
     $("#errorMessage").animate({width:'hide'},350);
-    console.log($("#moneyName").val() == '');
-    console.log($("#amount").val() == '');
-    console.log((!$("#accountType").checked || !$("#accountType").checked));
-    debugger;
-    if($("#moneyName").val() == '' || $("#amount").val() == '' || (!$("#accountType").checked && !$("#accountType").checked)) {
-        debugger;
+    if($("#moneyName").val() == '' || $("#amount").val() == '') {
         handleError("RAWR! All fields are required");
         return false;
     }
@@ -25,13 +20,10 @@ const MoneyForm = (props) => {
             <input id="moneyName" type="text" name="name" placeholder="Bank Name"/>
             <label htmlFor="amount">Amount: </label>
             <input id="amount" type="text" name="amount" placeholder="0"/>
-            <label htmlFor="typeOfAccount">Account Type: </label>
-            <input id="accountType" type="radio" name="accountType" value="Checkings"/>Checkings
-            <input id="accountType" type="radio" name="accountType" value="Savings"/>Savings
             <label htmlFor="interest">Interest: </label>
-            <input id="intrest" type="text" name="interest" placeholder="0"/>
+            <input id="interest" type="text" name="interest" placeholder="0"/>
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input className="makeMoneySubmit" type="submit" value="Make Money Account"/>
+            <input className="makeDomoSubmit" type="submit" value="Make Money Account"/>
         </form>
     );
 };
@@ -48,10 +40,8 @@ const MoneyList = function(props) {
     const moneyNodes = props.moneyStacks.map(function(moneyAccount) {
         return (
             <div key={moneyAccount._id} className="domo">
-                <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace"/>
                 <h3 className="domoName">Name: {moneyAccount.name}</h3>
                 <h3 className="domoAge">Amount: {moneyAccount.amount}</h3>
-                <h3 className="domoName">Account type: {moneyAccount.typeOfAccount}</h3>
             </div>
         );
     });

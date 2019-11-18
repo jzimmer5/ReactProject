@@ -20,10 +20,6 @@ const MoneySchema = new mongoose.Schema({
     required: false,
     default: 0,
   },
-  typeOfAccount: {
-    type: String,
-    required: true,
-  },
   interest: {
     type: Number,
   },
@@ -50,7 +46,7 @@ MoneySchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertId(ownerId),
   };
 
-  return MoneyModel.find(search).select('name amount typeOfAccount interest').exec(callback);
+  return MoneyModel.find(search).select('name amount interest').exec(callback);
 };
 
 MoneyModel = mongoose.model('Money', MoneySchema);

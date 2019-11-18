@@ -22,15 +22,17 @@ const statPage = (req, res) => {
 };
 
 const makeMoneyAccount = (req, res) => {
-  if (!req.body.name || !req.body.amount || !req.body.typeOfAccount) {
-    return res.status(400).json({ error: 'Name, amount, and type are all required.' });
+  if (!req.body.name || !req.body.amount) {
+    return res.status(400).json({ error: 'Name, amount are all required.' });
   }
-
+  let interestIncome = 1;
+  if (req.body.interest != null) {
+    interestIncome = req.body.interest;
+  }
   const moneyData = {
     name: req.body.name,
     amount: req.body.amount,
-    typeOfAccount: req.body.typeOfAccount,
-    interest: req.body.interest,
+    interest: interestIncome,
     owner: req.session.account._id,
   };
 

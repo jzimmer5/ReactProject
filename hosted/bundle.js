@@ -4,12 +4,7 @@ var handleMoney = function handleMoney(e) {
     e.preventDefault();
 
     $("#errorMessage").animate({ width: 'hide' }, 350);
-    console.log($("#moneyName").val() == '');
-    console.log($("#amount").val() == '');
-    console.log(!$("#accountType").checked || !$("#accountType").checked);
-    debugger;
-    if ($("#moneyName").val() == '' || $("#amount").val() == '' || !$("#accountType").checked && !$("#accountType").checked) {
-        debugger;
+    if ($("#moneyName").val() == '' || $("#amount").val() == '') {
         handleError("RAWR! All fields are required");
         return false;
     }
@@ -38,21 +33,12 @@ var MoneyForm = function MoneyForm(props) {
         React.createElement("input", { id: "amount", type: "text", name: "amount", placeholder: "0" }),
         React.createElement(
             "label",
-            { htmlFor: "typeOfAccount" },
-            "Account Type: "
-        ),
-        React.createElement("input", { id: "accountType", type: "radio", name: "accountType", value: "Checkings" }),
-        "Checkings",
-        React.createElement("input", { id: "accountType", type: "radio", name: "accountType", value: "Savings" }),
-        "Savings",
-        React.createElement(
-            "label",
             { htmlFor: "interest" },
             "Interest: "
         ),
-        React.createElement("input", { id: "intrest", type: "text", name: "interest", placeholder: "0" }),
+        React.createElement("input", { id: "interest", type: "text", name: "interest", placeholder: "0" }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { className: "makeMoneySubmit", type: "submit", value: "Make Money Account" })
+        React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Make Money Account" })
     );
 };
 
@@ -73,7 +59,6 @@ var MoneyList = function MoneyList(props) {
         return React.createElement(
             "div",
             { key: moneyAccount._id, className: "domo" },
-            React.createElement("img", { src: "/assets/img/domoface.jpeg", alt: "domo face", className: "domoFace" }),
             React.createElement(
                 "h3",
                 { className: "domoName" },
@@ -85,12 +70,6 @@ var MoneyList = function MoneyList(props) {
                 { className: "domoAge" },
                 "Amount: ",
                 moneyAccount.amount
-            ),
-            React.createElement(
-                "h3",
-                { className: "domoName" },
-                "Account type: ",
-                moneyAccount.typeOfAccount
             )
         );
     });

@@ -21,6 +21,16 @@ const statPage = (req, res) => {
   });
 };
 
+const graphPage = (req, res) => {
+  Money.MoneyModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred' });
+    }
+    return res.render('overallstat', { csrfToken: req.csrfToken(), moneyStacks: docs });
+  });
+};
+
 const makeMoneyAccount = (req, res) => {
   if (!req.body.name || !req.body.amount) {
     return res.status(400).json({ error: 'Name, amount are all required.' });
@@ -69,3 +79,4 @@ module.exports.makerPage = makerPage;
 module.exports.getMoney = getMoney;
 module.exports.make = makeMoneyAccount;
 module.exports.statPage = statPage;
+module.exports.graphPage = graphPage;

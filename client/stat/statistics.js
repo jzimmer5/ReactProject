@@ -6,43 +6,7 @@ const StatsList = function (props) {
             </div>
         );
     };
-    var monthTotal1 = 0;
-    var monthTotal2 = 0;
-    var monthTotal3 = 0;
-    var monthTotal4 = 0;
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal1 += acc.amount;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal2 += acc.amount * acc.interest;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal3 += (acc.amount * acc.interest) * acc.interest;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal4 += ((acc.amount * acc.interest) * acc.interest) * acc.interest;
-    }
-    const overallStats = function () {
-        return (
-            <div className="domo">
-                <h3 className="title">Combined Amount for all Accounts With Interest</h3>
-                <table>
-                    <tr>
-                        <th>Month 1</th>
-                        <th>Month 2</th>
-                        <th>Month 3</th>
-                        <th>Month 4</th>
-                    </tr>
-                    <tr>
-                        <th>{monthTotal1}</th>
-                        <th>{monthTotal2}</th>
-                        <th>{monthTotal3}</th>
-                        <th>{monthTotal4}</th>
-                    </tr>
-                </table>
-            </div>
-        );
-    };
+    
     const accountStats = props.moneyStacks.map(function (moneyAccount) {
         return (
             <div className="stats">

@@ -11,6 +11,7 @@ const router = (app) => {
   app.get('/maker', mid.requiresLogin, controllers.Money.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Money.make);
   app.get('/stat', mid.requiresLogin, controllers.Money.statPage);
+  app.get('/graph', mid.requiresLogin, controllers.Money.graphPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 

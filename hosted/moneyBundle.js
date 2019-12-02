@@ -32,6 +32,11 @@ var StatsList = function StatsList(props) {
                     React.createElement(
                         "th",
                         null,
+                        "Interest Amount"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
                         moneyAccount.interest
                     ),
                     React.createElement(
@@ -53,6 +58,11 @@ var StatsList = function StatsList(props) {
                 React.createElement(
                     "tr",
                     null,
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.interest
+                    ),
                     React.createElement(
                         "th",
                         null,

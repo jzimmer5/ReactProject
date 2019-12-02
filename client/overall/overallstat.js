@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 const graphStat = function(props){
     if (props.moneyStacks.length === 0) {
         return (
@@ -23,10 +24,30 @@ const graphStat = function(props){
     for (var acc = 0; acc > props.moneyStacks.length; acc++) {
         monthTotal4 += ((acc.amount * acc.interest) * acc.interest) * acc.interest;
     }
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+        data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [monthTotal1, monthTotal2, monthTotal3, monthTotal4]
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
     const overallStats = function () {
         return (
             <div className="domo">
                 <h3 className="title">Combined Amount for all Accounts With Interest</h3>
+                <canvas id="myChart"></canvas>
                 <table>
                     <tr>
                         <th>Month 1</th>

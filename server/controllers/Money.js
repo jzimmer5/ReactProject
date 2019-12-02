@@ -27,7 +27,7 @@ const graphPage = (req, res) => {
       console.log(err);
       return res.status(400).json({ error: 'An error occurred' });
     }
-    return res.render('overallstat', { csrfToken: req.csrfToken(), moneyStacks: docs });
+    return res.render('graph', { csrfToken: req.csrfToken(), moneyStacks: docs });
   });
 };
 

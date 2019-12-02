@@ -13,12 +13,14 @@ const StatsList = function (props) {
                 <h3 class="title">{moneyAccount.name} With Different Interests</h3>
                 <table>
                     <tr>
+                        <th>Interest Amount</th>
                         <th>{moneyAccount.interest}</th>
                         <th>{moneyAccount.interest * 2}</th>
                         <th>{moneyAccount.interest * 4}</th>
                         <th>{moneyAccount.interest * 6}</th>
                     </tr>
                     <tr>
+                        <th>{moneyAccount.interest}</th>
                         <th>{moneyAccount.amount}</th>
                         <th>{moneyAccount.amount * (moneyAccount.interest * 2)}</th>
                         <th>{moneyAccount.amount * (moneyAccount.interest * 4)}</th>

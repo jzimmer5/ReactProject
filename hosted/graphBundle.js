@@ -1,7 +1,8 @@
 "use strict";
 
 React.createElement("script", { src: "https://cdn.jsdelivr.net/npm/chart.js@2.8.0" });
-var graphStat = function graphStat(props) {
+
+var GraphStat = function GraphStat(props) {
     if (props.moneyStacks.length === 0) {
         return React.createElement(
             "div",
@@ -50,6 +51,7 @@ var graphStat = function graphStat(props) {
         options: {}
     });
     var overallStats = function overallStats() {
+        debug();
         return React.createElement(
             "div",
             { className: "domo" },
@@ -58,7 +60,7 @@ var graphStat = function graphStat(props) {
                 { className: "title" },
                 "Combined Amount for all Accounts With Interest"
             ),
-            React.createElement("canvas", { id: "myChart" }),
+            React.createElement("canvas", { id: "myChart", width: "400", height: "400" }),
             React.createElement(
                 "table",
                 null,
@@ -137,12 +139,12 @@ var graphStat = function graphStat(props) {
 
 var loadMoneyAccountsFromServer = function loadMoneyAccountsFromServer() {
     sendAjax('GET', '/getMoney', null, function (data) {
-        ReactDOM.render(React.createElement("graphStat", { moneyStacks: data.moneyStacks }), document.querySelector("#content"));
+        ReactDOM.render(React.createElement(GraphStat, { moneyStacks: data.moneyStacks }), document.querySelector("#content"));
     });
 };
 
 var setup = function setup(csrf) {
-    ReactDOM.render(React.createElement("graphStat", { moneyStacks: [] }), document.querySelector("#content"));
+    ReactDOM.render(React.createElement(GraphStat, { moneyStacks: [] }), document.querySelector("#content"));
 
     loadMoneyAccountsFromServer();
 };

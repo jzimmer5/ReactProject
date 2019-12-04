@@ -1,5 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-const graphStat = function(props){
+
+const GraphStat = function(props){
     if (props.moneyStacks.length === 0) {
         return (
             <div className="domoList">
@@ -44,10 +45,11 @@ const graphStat = function(props){
         options: {}
     });
     const overallStats = function () {
+        debug();
         return (
             <div className="domo">
                 <h3 className="title">Combined Amount for all Accounts With Interest</h3>
-                <canvas id="myChart"></canvas>
+                <canvas id="myChart" width="400" height="400"></canvas>
                 <table>
                     <tr>
                         <th>Month 1</th>
@@ -80,14 +82,14 @@ const graphStat = function(props){
 const loadMoneyAccountsFromServer = () => {
     sendAjax('GET', '/getMoney', null, (data) => {
         ReactDOM.render(
-            <graphStat moneyStacks={data.moneyStacks} />, document.querySelector("#content")
+            <GraphStat moneyStacks={data.moneyStacks} />, document.querySelector("#content")
         );
     });
 };
 
 const setup = function (csrf) {
     ReactDOM.render(
-        <graphStat moneyStacks={[]} />, document.querySelector("#content")
+        <GraphStat moneyStacks={[]} />, document.querySelector("#content")
     );
 
     loadMoneyAccountsFromServer();

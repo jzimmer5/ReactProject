@@ -48,12 +48,18 @@ const validatePassword = (doc, password, callback) => {
 };
 
 AccountSchema.statics.findByUsername = (name, callback) => {
-  const search = {
-    username: name,
-  };
+  
 
   return AccountModel.findOne(search, callback);
 };
+
+AccountScheme.statics.getAccountDetails = (name, callback) => {
+  const search = {
+    username: name,
+  }
+
+  return AccountModel.findByUsername(search).select('username password').exec(callback);
+}
 
 AccountSchema.statics.generateHash = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);

@@ -15,42 +15,42 @@ var GraphStat = function GraphStat(props) {
         );
     };
 
-    var monthTotal1 = 0;
-    var monthTotal2 = 0;
-    var monthTotal3 = 0;
-    var monthTotal4 = 0;
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal1 += acc.amount;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal2 += acc.amount * acc.interest;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal3 += acc.amount * acc.interest * acc.interest;
-    }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal4 += acc.amount * acc.interest * acc.interest * acc.interest;
-    }
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [monthTotal1, monthTotal2, monthTotal3, monthTotal4]
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
     var overallStats = function overallStats() {
+        var monthTotal1 = 0;
+        var monthTotal2 = 0;
+        var monthTotal3 = 0;
+        var monthTotal4 = 0;
+        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
+            monthTotal1 += acc.amount;
+        }
+        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
+            monthTotal2 += acc.amount * acc.interest;
+        }
+        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
+            monthTotal3 += acc.amount * acc.interest * acc.interest;
+        }
+        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
+            monthTotal4 += acc.amount * acc.interest * acc.interest * acc.interest;
+        }
+        var ctx = document.getElementById('myChart').getContext("2d");
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [monthTotal1, monthTotal2, monthTotal3, monthTotal4]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
         debug();
         return React.createElement(
             "div",

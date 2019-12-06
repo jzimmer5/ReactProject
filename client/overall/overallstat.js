@@ -9,7 +9,8 @@ const GraphStat = function(props){
         );
     };
 
-    var monthTotal1 = 0;
+    const overallStats = function () {
+        var monthTotal1 = 0;
     var monthTotal2 = 0;
     var monthTotal3 = 0;
     var monthTotal4 = 0;
@@ -25,7 +26,7 @@ const GraphStat = function(props){
     for (var acc = 0; acc > props.moneyStacks.length; acc++) {
         monthTotal4 += ((acc.amount * acc.interest) * acc.interest) * acc.interest;
     }
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myChart').getContext("2d");
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
@@ -44,7 +45,6 @@ const GraphStat = function(props){
         // Configuration options go here
         options: {}
     });
-    const overallStats = function () {
         debug();
         return (
             <div className="domo">

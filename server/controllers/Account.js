@@ -1,6 +1,13 @@
 const models = require('../models');
 const Account = models.Account;
 
+const defaultData = {
+  username: 'unknown',
+  salt: '',
+  pass: 'uknown',
+}
+let accountLogin = defaultData;
+
 const loginPage = (req, res) => {
   res.render('login', { crsfTOKEN: req.csrfToken() });
 };
@@ -59,6 +66,7 @@ const signup = (request, response) => {
 
     savePromise.then(() => {
       req.session.account = Account.AccountModel.toAPI(newAccount);
+      accountLogin = newAccount;
       return res.json({ redirect: '/maker' });
     });
 
@@ -71,6 +79,14 @@ const signup = (request, response) => {
       return res.status(400).json({ error: 'An error occured' });
     });
   });
+};
+
+const updatePass = (req, res) => {
+  accountLogin.pass = req.body.pass
+
+  const savePromise = accountLogin.save();
+  savePromise.then(() => res.json({username: accountLogin.username, pass: accountLogin.pass}));
+  savePromise.catch((err) => res.json({ err}));
 };
 
 const getToken = (request, response) => {
@@ -89,3 +105,4 @@ module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
+module.exports.updatePass = updatePass;

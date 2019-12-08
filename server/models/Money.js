@@ -49,6 +49,14 @@ MoneySchema.statics.findByOwner = (ownerId, callback) => {
   return MoneyModel.find(search).select('name amount interest').exec(callback);
 };
 
+MoneySchema.statics.findByName = (name, callback) => {
+  const search = {
+    name: name,
+  };
+
+  return MoneyModel.find(search).select('name amount interest').exec(callback);
+};
+
 MoneyModel = mongoose.model('Money', MoneySchema);
 
 module.exports.MoneyModel = MoneyModel;

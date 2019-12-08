@@ -13,7 +13,10 @@ const router = (app) => {
   app.get('/stat', mid.requiresLogin, controllers.Money.statPage);
   app.get('/graph', mid.requiresLogin, controllers.Money.graphPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
-  app.post('/updatePass', mid.requiresLogin, controllers.Account.updatePass)
+  app.post('/updatePass', mid.requiresLogin, controllers.Account.updatePass);
+  app.get('/updatePass', mid.requiresLogin, controllers.Account.passChangePage);
+  app.post('/updateMoney', mid.requiresLogin, controllers.Money.updateMoney);
+  app.get('/updateMoney', mid.requiresLogin, controllers.Money.moneyChangePage);
 };
 
 module.exports = router;

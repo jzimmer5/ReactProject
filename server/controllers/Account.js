@@ -81,6 +81,10 @@ const signup = (request, response) => {
   });
 };
 
+const passChangePage = (req, res) => {
+  res.render('settings', { crsfTOKEN: req.csrfToken() });
+};
+
 const updatePass = (req, res) => {
   accountLogin.pass = req.body.pass
 
@@ -106,3 +110,4 @@ module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.updatePass = updatePass;
+module.exports.passChangePage = passChangePage;

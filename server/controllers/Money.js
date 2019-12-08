@@ -76,21 +76,28 @@ const getMoney = (request, response) => {
 };
 
 const updateMoney = (req, res) => {
-  const newAmount = {
+  let newAmount = {
     name: req.body.name,
     amount: 0,
     interest: 0,
     owner: req.session.account._id,
-  }
+  };
 
-  newAmount = Money.MoneyModel.findByName(newAmount.name, (err,docs));
+  newAmount = Money.MoneyModel.findByName(newAmount.name, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }
 
-  const savePromise = accountLogin.save();
-  savePromise.then(() => res.json({username: newAmount.name, amount: newAmount.amount, interest: newAmount.interest, owner: newAmount.owner}));
-  savePromise.catch((err) => res.json({ err}));
+    return docs;
+  });
+
+  const savePromise = newAmount.save();
+  savePromise.then(() => res.json({ username: newAmount.name, amount: newAmount.amount, interest: newAmount.interest, owner: newAmount.owner }));
+  savePromise.catch((err) => res.json({ err }));
 };
 
-const passChangePage = (req, res) => {
+const moneyChangePage = (req, res) => {
   res.render('moneyChanger', { crsfTOKEN: req.csrfToken() });
 };
 
@@ -100,4 +107,4 @@ module.exports.make = makeMoneyAccount;
 module.exports.statPage = statPage;
 module.exports.graphPage = graphPage;
 module.exports.updateMoney = updateMoney;
-module.exports.updateMoney = updateMoney;
+module.exports.moneyChangePage = moneyChangePage;

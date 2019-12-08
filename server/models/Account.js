@@ -47,19 +47,15 @@ const validatePassword = (doc, password, callback) => {
   });
 };
 
-AccountSchema.statics.findByUsername = (name, callback) => {
-  
+AccountSchema.statics.findByUsername = (name, callback) => AccountModel.findOne(search, callback);
 
-  return AccountModel.findOne(search, callback);
-};
-
-AccountScheme.statics.getAccountDetails = (name, callback) => {
+AccountSchema.statics.getAccountDetails = (name, callback) => {
   const search = {
     username: name,
-  }
+  };
 
   return AccountModel.findByUsername(search).select('username password').exec(callback);
-}
+};
 
 AccountSchema.statics.generateHash = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);

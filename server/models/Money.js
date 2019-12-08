@@ -51,7 +51,7 @@ MoneySchema.statics.findByOwner = (ownerId, callback) => {
 
 MoneySchema.statics.findByName = (name, callback) => {
   const search = {
-    name: name,
+    name,
   };
 
   return MoneyModel.find(search).select('name amount interest').exec(callback);

@@ -5,7 +5,7 @@ const defaultData = {
   username: 'unknown',
   salt: '',
   pass: 'uknown',
-}
+};
 let accountLogin = defaultData;
 
 const loginPage = (req, res) => {
@@ -86,11 +86,11 @@ const passChangePage = (req, res) => {
 };
 
 const updatePass = (req, res) => {
-  accountLogin.pass = req.body.pass
+  accountLogin.pass = req.body.pass;
 
   const savePromise = accountLogin.save();
-  savePromise.then(() => res.json({username: accountLogin.username, pass: accountLogin.pass}));
-  savePromise.catch((err) => res.json({ err}));
+  savePromise.then(() => res.json({ username: accountLogin.username, pass: accountLogin.pass }));
+  savePromise.catch((err) => res.json({ err }));
 };
 
 const getToken = (request, response) => {

@@ -83,12 +83,10 @@ const signup = (request, response) => {
 
 const passChangePage = (req, res) => {
   res.render('settings', { crsfTOKEN: req.csrfToken() });
-
-  
 };
 
-const getAccount = (req, res) => {
-  return Account.AccountModel.findByUsername(req.session.account.username, (err, docs) => {
+const getAccount = (req, res) =>
+  Account.AccountModel.findByUsername(req.session.account.username, (err, docs) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occured' });
@@ -96,7 +94,6 @@ const getAccount = (req, res) => {
 
     return res.json({ moneyStacks: docs });
   });
-};
 
 const updatePass = (req, res) => {
   accountLogin.pass = req.body.pass;
@@ -124,4 +121,4 @@ module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.updatePass = updatePass;
 module.exports.passChangePage = passChangePage;
-module.exports.getAccount = getAccount
+module.exports.getAccount = getAccount;

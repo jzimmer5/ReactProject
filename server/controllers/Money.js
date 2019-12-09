@@ -93,7 +93,11 @@ const updateMoney = (req, res) => {
   });
 
   const savePromise = newAmount.save();
-  savePromise.then(() => res.json({ username: newAmount.name, amount: newAmount.amount, interest: newAmount.interest, owner: newAmount.owner }));
+  savePromise.then(() => res.json(
+    { username: newAmount.name,
+      amount: newAmount.amount,
+      interest: newAmount.interest,
+      owner: newAmount.owner }));
   savePromise.catch((err) => res.json({ err }));
 };
 

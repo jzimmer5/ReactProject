@@ -9,7 +9,7 @@ const GraphStat = function(props){
         );
     };
 
-    const overallStats = function () {
+    const overallStats = function (props) {
         var monthTotal1 = 0;
     var monthTotal2 = 0;
     var monthTotal3 = 0;
@@ -45,7 +45,6 @@ const GraphStat = function(props){
         // Configuration options go here
         options: {}
     });
-        debug();
         return (
             <div className="domo">
                 <h3 className="title">Combined Amount for all Accounts With Interest</h3>
@@ -72,7 +71,7 @@ const GraphStat = function(props){
         <div className="wrapperForAd">
             <div className="ad">This is an ad</div>
         <div className="domoList">
-            {overallStats}
+            {overallStats(props= props)}
         </div>
         <div className="ad">This is an ad</div>
         </div>

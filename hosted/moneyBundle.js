@@ -14,6 +14,12 @@ var StatsList = function StatsList(props) {
     };
 
     var accountStats = props.moneyStacks.map(function (moneyAccount) {
+        var calculatedInterest = function calculatedInterest(amount, interest) {
+            return amount + amount * interest;
+        };
+        var interest2 = moneyAccount.interest * 2;
+        var interest3 = moneyAccount.interest * 4;
+        var interest4 = moneyAccount.interest * 6;
         return React.createElement(
             "div",
             { className: "stats" },
@@ -37,22 +43,22 @@ var StatsList = function StatsList(props) {
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.interest
+                        "Month 1"
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.interest * 2
+                        "Month 2"
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.interest * 4
+                        "Month 3"
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.interest * 6
+                        "Month 4"
                     )
                 ),
                 React.createElement(
@@ -66,22 +72,109 @@ var StatsList = function StatsList(props) {
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.amount
+                        moneyAccount.amount + moneyAccount.amount * moneyAccount.interest
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.amount * (moneyAccount.interest * 2)
+                        calculatedInterest(moneyAccount.amount, moneyAccount.interest * 2)
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.amount * (moneyAccount.interest * 4)
+                        calculatedInterest(moneyAccount.amount, moneyAccount.interest * 4)
                     ),
                     React.createElement(
                         "th",
                         null,
-                        moneyAccount.amount * (moneyAccount.interest * 6)
+                        calculatedInterest(moneyAccount.amount, moneyAccount.interest * 6)
+                    )
+                ),
+                React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.interest * 2
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.amount + moneyAccount.amount * moneyAccount.interest * 2
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest2 * 2)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest2 * 4)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest2 * 6)
+                    )
+                ),
+                React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.interest * 4
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.amount + moneyAccount.amount * moneyAccount.interest * 4
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest3 * 2)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest3 * 4)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest3 * 6)
+                    )
+                ),
+                React.createElement(
+                    "tr",
+                    null,
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.interest * 6
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        moneyAccount.amount + moneyAccount.amount * moneyAccount.interest * 6
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest4 * 2)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest4 * 4)
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        calculatedInterest(moneyAccount.amount, interest4 * 6)
                     )
                 )
             )

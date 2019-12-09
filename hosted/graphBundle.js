@@ -15,7 +15,7 @@ var GraphStat = function GraphStat(props) {
         );
     };
 
-    var overallStats = function overallStats() {
+    var overallStats = function overallStats(props) {
         var monthTotal1 = 0;
         var monthTotal2 = 0;
         var monthTotal3 = 0;
@@ -51,7 +51,6 @@ var GraphStat = function GraphStat(props) {
             // Configuration options go here
             options: {}
         });
-        debug();
         return React.createElement(
             "div",
             { className: "domo" },
@@ -127,7 +126,7 @@ var GraphStat = function GraphStat(props) {
         React.createElement(
             "div",
             { className: "domoList" },
-            overallStats
+            overallStats(props = props)
         ),
         React.createElement(
             "div",

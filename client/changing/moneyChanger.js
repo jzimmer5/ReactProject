@@ -23,15 +23,17 @@ const PassChange = function(props){
 };
 
 const createSettingsWindow = (csrf) => {
+    sendAjax('GET', '/updateMoney', null, (data) => {
     ReactDOM.render(
-        <PassChange csrf={csrf} />,
+        <PassChange props={data.moneyStacks} />,
         document.querySelector("#content")
     );
+    });
 };
 
 const getToken = () => {
     sendAjax('GET', '/getToken', null, (result) => {
-        setup(result.csrfToken)
+        createSettingsWindow(result.csrfToken)
     });
 };
 

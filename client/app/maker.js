@@ -74,7 +74,7 @@ const setup = function(csrf) {
     );
 
     ReactDOM.render(
-        <MoneyForm moneyStacks={[]} />, document.querySelector("#moneyAccounts")
+        <MoneyList moneyStacks={[]} />, document.querySelector("#moneyAccounts")
     );
 
     loadMoneyAccountsFromServer();

@@ -117,7 +117,7 @@ var loadMoneyAccountsFromServer = function loadMoneyAccountsFromServer() {
 var setup = function setup(csrf) {
     ReactDOM.render(React.createElement(MoneyForm, { csrf: csrf }), document.querySelector("#makeMoney"));
 
-    ReactDOM.render(React.createElement(MoneyForm, { moneyStacks: [] }), document.querySelector("#moneyAccounts"));
+    ReactDOM.render(React.createElement(MoneyList, { moneyStacks: [] }), document.querySelector("#moneyAccounts"));
 
     loadMoneyAccountsFromServer();
 };

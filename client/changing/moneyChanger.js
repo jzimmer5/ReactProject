@@ -8,7 +8,7 @@ const handleChange = (e) => {
     return false;
 };
 
-const PassChange = function(props){
+const AccountChange = function(props){
     return (
         <form id="moneyChangeForm" className ="mainForm" name="moneyChangeForm" onSubmit={handleChange} action="/updateMoney" method="POST">
             <h3>Enter a account name and change the total amount</h3>
@@ -17,18 +17,16 @@ const PassChange = function(props){
             <label htmlFor="amount">New Amount: </label>
             <input id="user" type="text" name="name" placeholder= "0" />
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input className="formSubmit" type="submit" value="account change" />
+            <input className="formSubmit" type="submit" value="Change" />
         </form>
     )
 };
 
 const createSettingsWindow = (csrf) => {
-    sendAjax('GET', '/updateMoney', null, (data) => {
     ReactDOM.render(
-        <PassChange props={data.moneyStacks} />,
+        <AccountChange props={csrf} />,
         document.querySelector("#content")
     );
-    });
 };
 
 const getToken = () => {

@@ -6,11 +6,25 @@ var GraphStat = function GraphStat(props) {
     if (props.moneyStacks.length === 0) {
         return React.createElement(
             "div",
-            { className: "domoList" },
+            { "class": "wrapperForAd" },
             React.createElement(
-                "h3",
-                { className: "emptyDomo" },
-                "No Stats yet"
+                "div",
+                { "class": "leftAd" },
+                "This is an ad"
+            ),
+            React.createElement(
+                "div",
+                { className: "domoList" },
+                React.createElement(
+                    "h3",
+                    { className: "emptyDomo" },
+                    "No Accounts yet"
+                )
+            ),
+            React.createElement(
+                "div",
+                { "class": "leftAd" },
+                "This is an ad"
             )
         );
     };
@@ -20,37 +34,18 @@ var GraphStat = function GraphStat(props) {
         var monthTotal2 = 0;
         var monthTotal3 = 0;
         var monthTotal4 = 0;
-        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-            monthTotal1 += acc.amount;
+        for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+            monthTotal1 += props.moneyStacks[acc].amount;
         }
-        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-            monthTotal2 += acc.amount * acc.interest;
+        for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+            monthTotal2 += props.moneyStacks[acc].amount * props.moneyStacks[acc].interest;
         }
-        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-            monthTotal3 += acc.amount * acc.interest * acc.interest;
+        for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+            monthTotal3 += props.moneyStacks[acc].amount * props.moneyStacks[acc].interest * props.moneyStacks[acc].interest;
         }
-        for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-            monthTotal4 += acc.amount * acc.interest * acc.interest * acc.interest;
+        for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+            monthTotal4 += props.moneyStacks[acc].amount * props.moneyStacks[acc].interest * props.moneyStacks[acc].interest * props.moneyStacks[acc].interest;
         }
-        var ctx = document.getElementById('myChart').getContext("2d");
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'line',
-
-            // The data for our dataset
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [{
-                    label: 'My First dataset',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [monthTotal1, monthTotal2, monthTotal3, monthTotal4]
-                }]
-            },
-
-            // Configuration options go here
-            options: {}
-        });
         return React.createElement(
             "div",
             { className: "domo" },
@@ -59,7 +54,6 @@ var GraphStat = function GraphStat(props) {
                 { className: "title" },
                 "Combined Amount for all Accounts With Interest"
             ),
-            React.createElement("canvas", { id: "myChart", width: "400", height: "400" }),
             React.createElement(
                 "table",
                 null,

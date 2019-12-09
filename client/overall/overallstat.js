@@ -3,9 +3,13 @@
 const GraphStat = function(props){
     if (props.moneyStacks.length === 0) {
         return (
-            <div className="domoList">
-                <h3 className="emptyDomo">No Stats yet</h3>
-            </div>
+            <div class="wrapperForAd">
+            <div class="leftAd">This is an ad</div>
+        <div className="domoList">
+            <h3 className="emptyDomo">No Accounts yet</h3>
+        </div>
+        <div class="leftAd">This is an ad</div>
+        </div>
         );
     };
 
@@ -14,41 +18,21 @@ const GraphStat = function(props){
     var monthTotal2 = 0;
     var monthTotal3 = 0;
     var monthTotal4 = 0;
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal1 += acc.amount;
+    for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+        monthTotal1 += props.moneyStacks[acc].amount;
     }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal2 += acc.amount * acc.interest;
+    for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+        monthTotal2 += props.moneyStacks[acc].amount * props.moneyStacks[acc].interest;
     }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal3 += (acc.amount * acc.interest) * acc.interest;
+    for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+        monthTotal3 += (props.moneyStacks[acc].amount * props.moneyStacks[acc].interest) * props.moneyStacks[acc].interest;
     }
-    for (var acc = 0; acc > props.moneyStacks.length; acc++) {
-        monthTotal4 += ((acc.amount * acc.interest) * acc.interest) * acc.interest;
+    for (var acc = 0; acc < props.moneyStacks.length; acc++) {
+        monthTotal4 += ((props.moneyStacks[acc].amount * props.moneyStacks[acc].interest) * props.moneyStacks[acc].interest) * props.moneyStacks[acc].interest;
     }
-    var ctx = document.getElementById('myChart').getContext("2d");
-    var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-        data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [monthTotal1, monthTotal2, monthTotal3, monthTotal4]
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
         return (
             <div className="domo">
                 <h3 className="title">Combined Amount for all Accounts With Interest</h3>
-                <canvas id="myChart" width="400" height="400"></canvas>
                 <table>
                     <tr>
                         <th>Month 1</th>

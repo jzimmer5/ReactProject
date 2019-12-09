@@ -26,7 +26,7 @@ var PassChange = function PassChange(props) {
         ),
         React.createElement("input", { id: "user", type: "text", name: "pass", placeholder: props.password }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { className: "formSubmit", type: "submit", value: "pass change" })
+        React.createElement("input", { className: "formSubmit", type: "submit", value: "change" })
     );
 };
 

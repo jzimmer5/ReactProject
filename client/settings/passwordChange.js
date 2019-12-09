@@ -15,7 +15,7 @@ const PassChange = function(props){
             <label htmlFor="pass">Password: </label>
             <input id="user" type="text" name="pass" placeholder= {props.password} />
             <input type="hidden" name="_csrf" value={props.csrf}/>
-            <input className="formSubmit" type="submit" value="pass change" />
+            <input className="formSubmit" type="submit" value="change" />
         </form>
     )
 };
